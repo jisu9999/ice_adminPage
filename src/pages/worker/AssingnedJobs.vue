@@ -1,12 +1,9 @@
 <template>
   <div class="space-y-4 md:space-y-6 p-4 md:p-6">
     <!-- 페이지 헤더 -->
-    <div
-      class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
       <div>
-        <p class="text-sm text-gray-500 mt-1">
-          작업 현황과 일정을 확인할 수 있습니다.
-        </p>
+        <p class="text-sm text-gray-500 mt-1">작업 현황과 일정을 확인할 수 있습니다.</p>
       </div>
       <div class="flex flex-col md:flex-row gap-3 w-full md:w-auto">
         <div class="relative w-full md:w-64">
@@ -16,8 +13,7 @@
             @input="handleInput"
             placeholder="고객명 또는 주소로 검색"
             class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white" />
-          <i
-            class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
         </div>
         <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
           <select
@@ -44,7 +40,7 @@
         <h2 class="text-lg font-semibold text-gray-800">배정된 예약 목록</h2>
       </div>
       <!-- 모바일 카드 뷰 -->
-       <!-- 모바일 카드 뷰 -->
+      <!-- 모바일 카드 뷰 -->
       <div class="md:hidden space-y-4 p-4">
         <div
           v-for="job in paginatedJobs"
@@ -52,11 +48,7 @@
           class="bg-white border rounded-lg p-4 space-y-4 hover:bg-gray-50 transition-all duration-200">
           <div class="flex justify-between items-start">
             <div class="space-y-2">
-              <span
-                :class="[
-                  'px-3 py-1 rounded-full sm:text-sm  text-xs font-medium',
-                  getStatusClass(job.status),
-                ]">
+              <span :class="['px-3 py-1 rounded-full sm:text-sm  text-xs font-medium', getStatusClass(job.status)]">
                 <i :class="getStatusIcon(job.status)" class="mr-1"></i>
                 {{ getStatusText(job.status) }}
               </span>
@@ -86,12 +78,9 @@
               {{ job.customer }}
             </div>
             <div class="text-sm text-gray-500">
-              <i class="fas fa-phone mr-1"></i
-              >{{ job.contact?.primary || job.phone }}
+              <i class="fas fa-phone mr-1"></i>{{ job.contact?.primary || job.phone }}
             </div>
-            <div class="text-sm text-gray-500">
-              <i class="fas fa-map-marker-alt mr-1"></i>{{ job.address }}
-            </div>
+            <div class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i>{{ job.address }}</div>
           </div>
 
           <div class="space-y-2">
@@ -99,9 +88,7 @@
               {{ job.serviceType }}
             </div>
             <div class="text-sm text-gray-500">{{ job.duration }}</div>
-            <div class="text-sm text-gray-500">
-              <i class="fas fa-users mr-1"></i>{{ job.partySize }}명
-            </div>
+            <div class="text-sm text-gray-500"><i class="fas fa-users mr-1"></i>{{ job.partySize }}명</div>
           </div>
 
           <div class="flex flex-wrap gap-2 pt-2">
@@ -131,43 +118,20 @@
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
-              <th
-                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                상태
-              </th>
-              <th
-                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                고객 정보
-              </th>
-              <th
-                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">상태</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">고객 정보</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 서비스 정보
               </th>
-              <th
-                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                일정
-              </th>
-              <th
-                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                장소 정보
-              </th>
-              <th
-                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                액션
-              </th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">일정</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">장소 정보</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">액션</th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
-            <tr
-              v-for="job in paginatedJobs"
-              :key="job.id"
-              class="hover:bg-gray-50 transition-colors duration-200">
+            <tr v-for="job in paginatedJobs" :key="job.id" class="hover:bg-gray-50 transition-colors duration-200">
               <td class="px-6 py-4 whitespace-nowrap">
-                <span
-                  :class="[
-                    getStatusClass(job.status),
-                    'px-3 py-1 rounded-full text-sm font-medium',
-                  ]">
+                <span :class="[getStatusClass(job.status), 'px-3 py-1 rounded-full text-sm font-medium']">
                   <i class="mr-1" :class="getStatusIcon(job.status)"></i>
                   {{ getStatusText(job.status) }}
                 </span>
@@ -190,12 +154,10 @@
                   {{ job.customer }}
                 </div>
                 <div class="text-sm text-gray-500">
-                  <i class="fas fa-phone mr-1"></i
-                  >{{ job.contact?.primary || job.phone }}
+                  <i class="fas fa-phone mr-1"></i>{{ job.contact?.primary || job.phone }}
                 </div>
                 <div class="text-sm text-gray-500 mt-1">
-                  <i class="fas fa-star text-yellow-400 mr-1"></i
-                  >{{ job.customerRating }}
+                  <i class="fas fa-star text-yellow-400 mr-1"></i>{{ job.customerRating }}
                 </div>
               </td>
               <td class="px-6 py-4">
@@ -220,9 +182,7 @@
                   {{ formatDate(job.date) }}
                 </div>
                 <div class="text-sm text-gray-500">{{ job.time }}</div>
-                <div class="text-sm text-gray-500 mt-1">
-                  <i class="fas fa-users mr-1"></i>{{ job.partySize }}명
-                </div>
+                <div class="text-sm text-gray-500 mt-1"><i class="fas fa-users mr-1"></i>{{ job.partySize }}명</div>
               </td>
               <td class="px-6 py-4">
                 <div class="text-sm text-gray-900">
@@ -262,8 +222,7 @@
       </div>
     </div>
     <!-- 페이지네이션 -->
-    <div
-      class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white rounded-lg shadow-sm p-4">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white rounded-lg shadow-sm p-4">
       <div class="text-sm text-gray-700">
         총 <span class="font-medium">{{ filteredJobs.length }}</span
         >건의 예약
@@ -281,9 +240,7 @@
             :key="page"
             @click="goToPage(page)"
             :class="[
-              currentPage === page
-                ? 'bg-indigo-600 text-white border-indigo-600'
-                : 'border-gray-300 hover:bg-gray-50',
+              currentPage === page ? 'bg-indigo-600 text-white border-indigo-600' : 'border-gray-300 hover:bg-gray-50',
             ]"
             class="px-3 py-1.5 border rounded transition-colors duration-200">
             {{ page }}
@@ -302,28 +259,18 @@
       v-if="selectedJob"
       @click="closeModal"
       class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center p-4 z-50">
-      <div
-        class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-        @click.stop>
-        <div
-          class="p-6 border-b border-gray-200 flex justify-between items-center">
+      <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" @click.stop>
+        <div class="p-6 border-b border-gray-200 flex justify-between items-center">
           <h2 class="text-xl font-semibold text-gray-900">작업 상세 정보</h2>
-          <button
-            @click="closeModal"
-            class="text-gray-400 hover:text-gray-500 transition-colors duration-200">
+          <button @click="closeModal" class="text-gray-400 hover:text-gray-500 transition-colors duration-200">
             <i class="fas fa-times"></i>
           </button>
         </div>
 
         <div class="p-6 space-y-6">
-          <div
-            class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div class="flex flex-wrap items-center gap-2">
-              <span
-                :class="[
-                  'px-3 py-1 rounded-full text-sm font-medium',
-                  getStatusClass(selectedJob.status),
-                ]">
+              <span :class="['px-3 py-1 rounded-full text-sm font-medium', getStatusClass(selectedJob.status)]">
                 {{ getStatusText(selectedJob.status) }}
               </span>
               <span
@@ -338,9 +285,7 @@
                 {{ selectedJob.priority }}
               </span>
             </div>
-            <span class="text-sm text-gray-500">
-              {{ formatDate(selectedJob.date) }} {{ selectedJob.time }}</span
-            >
+            <span class="text-sm text-gray-500"> {{ formatDate(selectedJob.date) }} {{ selectedJob.time }}</span>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -365,14 +310,10 @@
                   <p class="text-gray-900">{{ selectedJob.partySize }}명</p>
                 </div>
                 <div>
-                  <label class="block text-sm text-gray-500 mb-1"
-                    >고객 평점</label
-                  >
+                  <label class="block text-sm text-gray-500 mb-1">고객 평점</label>
                   <div class="flex items-center">
                     <i class="fas fa-star text-yellow-400 mr-1"></i>
-                    <span class="text-gray-900">{{
-                      selectedJob.customerRating
-                    }}</span>
+                    <span class="text-gray-900">{{ selectedJob.customerRating }}</span>
                   </div>
                 </div>
               </div>
@@ -383,27 +324,19 @@
               <h3 class="text-lg font-medium text-gray-900">서비스 정보</h3>
               <div class="bg-gray-50 p-4 rounded-lg space-y-3">
                 <div>
-                  <label class="block text-sm text-gray-500 mb-1"
-                    >서비스 유형</label
-                  >
+                  <label class="block text-sm text-gray-500 mb-1">서비스 유형</label>
                   <p class="text-gray-900">{{ selectedJob.serviceType }}</p>
                 </div>
                 <div>
-                  <label class="block text-sm text-gray-500 mb-1"
-                    >작업 시간</label
-                  >
+                  <label class="block text-sm text-gray-500 mb-1">작업 시간</label>
                   <p class="text-gray-900">{{ selectedJob.duration }}</p>
                 </div>
                 <div>
-                  <label class="block text-sm text-gray-500 mb-1"
-                    >담당 작업자</label
-                  >
+                  <label class="block text-sm text-gray-500 mb-1">담당 작업자</label>
                   <p class="text-gray-900">{{ selectedJob.assignedWorker }}</p>
                 </div>
                 <div>
-                  <label class="block text-sm text-gray-500 mb-1"
-                    >결제 상태</label
-                  >
+                  <label class="block text-sm text-gray-500 mb-1">결제 상태</label>
                   <span
                     :class="[
                       'px-2 py-0.5 text-xs font-medium rounded-full',
@@ -415,9 +348,7 @@
                   </span>
                 </div>
                 <div>
-                  <label class="block text-sm text-gray-500 mb-1"
-                    >총 금액</label
-                  >
+                  <label class="block text-sm text-gray-500 mb-1">총 금액</label>
                   <p class="text-gray-900">
                     {{ formatCurrency(selectedJob.totalAmount) }}
                   </p>
@@ -433,14 +364,8 @@
                   <label class="block text-sm text-gray-500 mb-1">메모</label>
                   <p class="text-gray-600">{{ selectedJob.notes }}</p>
                 </div>
-                <div
-                  v-if="
-                    selectedJob.specialRequests &&
-                    selectedJob.specialRequests.length > 0
-                  ">
-                  <label class="block text-sm text-gray-500 mb-1"
-                    >요청사항</label
-                  >
+                <div v-if="selectedJob.specialRequests && selectedJob.specialRequests.length > 0">
+                  <label class="block text-sm text-gray-500 mb-1">요청사항</label>
                   <div class="flex flex-wrap gap-2">
                     <span
                       v-for="request in selectedJob.specialRequests"
@@ -472,20 +397,14 @@
             <div class="md:col-span-2 space-y-4">
               <h3 class="text-lg font-medium text-gray-900">작업 진행 상황</h3>
               <div class="relative pl-8">
-                <div
-                  class="absolute left-0 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+                <div class="absolute left-0 top-0 bottom-0 w-0.5 bg-gray-200"></div>
 
                 <div class="relative pb-8">
-                  <div
-                    class="absolute left-0 top-0 w-4 h-4 rounded-full border-2 border-white bg-gray-200 -ml-2"></div>
+                  <div class="absolute left-0 top-0 w-4 h-4 rounded-full border-2 border-white bg-gray-200 -ml-2"></div>
                   <div class="pl-4">
                     <h4 class="font-medium text-gray-900">작업 시작</h4>
                     <p class="text-sm text-gray-500">
-                      {{
-                        selectedJob.startTime
-                          ? formatTime(selectedJob.startTime)
-                          : "아직 시작하지 않음"
-                      }}
+                      {{ selectedJob.startTime ? formatTime(selectedJob.startTime) : "아직 시작하지 않음" }}
                     </p>
                   </div>
                 </div>
@@ -494,18 +413,12 @@
                   <div
                     :class="[
                       'absolute left-0 top-0 w-4 h-4 rounded-full border-2 border-white -ml-2',
-                      selectedJob.status === 'completed'
-                        ? 'bg-green-500'
-                        : 'bg-gray-200',
+                      selectedJob.status === 'completed' ? 'bg-green-500' : 'bg-gray-200',
                     ]"></div>
                   <div class="pl-4">
                     <h4 class="font-medium text-gray-900">작업 완료</h4>
                     <p class="text-sm text-gray-500">
-                      {{
-                        selectedJob.completeTime
-                          ? formatTime(selectedJob.completeTime)
-                          : "아직 시작하지 않음"
-                      }}
+                      {{ selectedJob.completeTime ? formatTime(selectedJob.completeTime) : "아직 시작하지 않음" }}
                     </p>
                   </div>
                 </div>
@@ -1076,10 +989,7 @@ const filteredJobs = computed(() => {
     const query = searchQuery.value.toLowerCase();
     result = result.filter((job) => {
       //   console.log(job);
-      return (
-        job.customer.toLowerCase().includes(query) ||
-        job.address.toLowerCase().includes(query)
-      );
+      return job.customer.toLowerCase().includes(query) || job.address.toLowerCase().includes(query);
     });
   }
   //   상태로 필터링
@@ -1223,4 +1133,3 @@ const closeModal = () => {
   selectedJob.value = null;
 };
 </script>
-
